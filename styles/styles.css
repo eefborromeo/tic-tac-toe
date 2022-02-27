@@ -32,6 +32,7 @@ h1 {
 #board {
   width: 50vh;
   height: 50vh;
+  margin: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -55,4 +56,14 @@ h1 {
 
 .box:disabled.o {
   background-color: rgb(233, 156, 120);
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  .box:disabled {
+    font-size: 3rem;
+  }
 }
