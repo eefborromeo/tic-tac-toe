@@ -16,13 +16,13 @@ export function checkHorizontalWin() {
     
     if (row1Check && !row2Check && !row3Check) {
         statusEl.textContent = `Game Over. ${row1[0]} wins!`;
-        return true
+        return row1[0]
     } else if (!row1Check && row2Check && !row3Check) {
         statusEl.textContent = `Game Over. ${row2[0]} wins!`;
-        return true
+        return row2[0]
     } else if (!row1Check && !row2Check && row3Check) {
         statusEl.textContent = `Game Over. ${row3[0]} wins!`;
-        return true
+        return row3[0]
     }
 }
 
@@ -38,13 +38,13 @@ export function checkVerticalWin() {
     
     if (col1Check && !col2Check && !col3Check) {
         statusEl.textContent = `Game Over. ${col1[0]} wins!`;
-        return true
+        return col1[0]
     } else if (!col1Check && col2Check && !col3Check) {
         statusEl.textContent = `Game Over. ${col2[0]} wins!`;
-        return true
+        return col2[0]
     } else if (!col1Check && !col2Check && col3Check) {
         statusEl.textContent = `Game Over. ${col3[0]} wins!`;
-        return true
+        return col3[0]
     }
 }
 
@@ -56,8 +56,8 @@ export function checkDiagonalWin() {
     const rightLeftCheck = rightLeft.every(char => char === rightLeft[0] && char !== '');
     
     if (leftRightCheck || rightLeftCheck) {
-        statusEl.textContent = `Game Over. ${leftRightCheck ?leftRight[0] : rightLeft[0]} wins!`;
-        return true
+        statusEl.textContent = `Game Over. ${leftRightCheck ? leftRight[0] : rightLeft[0]} wins!`;
+        return leftRightCheck ? leftRight[0] : rightLeft[0]
     } 
 }
 
