@@ -8,11 +8,15 @@
 }
 
 body {
+  background-color: rgb(38, 42, 85);
   height: 100vh;
+}
+
+.container {
   display: grid;
   justify-content: center;
   align-content: center;
-  background-color: rgb(38, 42, 85);
+  padding-top: 1rem;
 }
 
 h1 {
@@ -66,6 +70,35 @@ h1 {
   color: white;
   font-size: 2rem;
   padding: 1rem 0;
+}
+
+#history {
+  visibility: hidden;
+  opacity: 0;
+  width: 70%;
+  padding: 1rem 0;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.previous,
+.new-game,
+.next {
+  text-transform: uppercase;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+}
+
+#history button:nth-child(odd):hover {
+  background-color: rgb(203, 126, 168);
+  color: white;
+}
+
+#history button:nth-child(even):hover {
+  background-color: rgb(233, 156, 120);
+  color: white;
 }
 
 @media (max-width: 768px) {

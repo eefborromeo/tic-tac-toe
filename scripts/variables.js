@@ -9,7 +9,6 @@ export const o = {
     score: 0
 };
 
-
 export let board = [
     ['', '', ''],
     ['', '', ''],
