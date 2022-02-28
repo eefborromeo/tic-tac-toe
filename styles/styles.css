@@ -60,6 +60,14 @@ h1 {
   background-color: rgb(233, 156, 120);
 }
 
+#stats {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 3rem;
