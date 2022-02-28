@@ -43,11 +43,13 @@ h1 {
   border: none;
   background-color: rgb(66 69 119);
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .box:disabled {
   color: white;
   font-size: 5rem;
+  cursor: default;
 }
 
 .box:disabled.x {
