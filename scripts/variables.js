@@ -1,4 +1,5 @@
 export const boxes = document.querySelectorAll('.box');
+export const boxesArr = Array.from(boxes);
 export const statusEl = document.querySelector('#status p');
 export const x = {
     name: 'X', 
