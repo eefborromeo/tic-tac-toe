@@ -1,14 +1,24 @@
-import { boxes, x, o, board, statusEl } from './variables.js';
+import { boxes, boxesArr, x, o, board, statusEl } from './variables.js';
 import { checkHorizontalWin, checkVerticalWin, checkDiagonalWin, checkWin } from './win.js';
-import { addScore } from './score.js'
+import { addScore } from './score.js';
+import { showHistory } from './history.js'
 
-let currentPlayer = x;
+export let currentPlayer = x;
+
+let moves = [];
+
+export function toggleCurrentPlayer() {
+    return currentPlayer = currentPlayer === x.name ? o.name : x.name;
+}
 
 function addMove() {
-    currentPlayer = currentPlayer === x.name ? o.name : x.name;
+    toggleCurrentPlayer();
     board[this.dataset.boardIndex].splice(this.dataset.index, 1, currentPlayer);
-    currentPlayer === x.name ? this.classList.add('x') : this.classList.add('o');
-    this.textContent = board[this.dataset.boardIndex][this.dataset.index];
+
+    currentPlayer === x.name ? 
+        (this.textContent = x.name, this.classList.add('x')) : 
+        (this.textContent = o.name, this.classList.add('o'));
+
     this.disabled = true;
     statusEl.textContent = `${currentPlayer === x.name ? o.name : x.name}'s turn`;
     checkHorizontalWin();
@@ -16,6 +26,7 @@ function addMove() {
     checkDiagonalWin();
     checkWin();
     addScore();
+    showHistory();
 }
 
 export function addChars() {
