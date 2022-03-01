@@ -1,4 +1,4 @@
-import { boxes, board, statusEl } from "./variables.js";
+import { boxes, boxesArr, board, statusEl } from "./variables.js";
 
 function disableBoard() {
     boxes.forEach(box => box.disabled = 'true');
@@ -52,8 +52,9 @@ export function checkDiagonalWin() {
     // DIAGONAL WIN
     const leftRight = board.map((row, index) => row[index]);
     const leftRightCheck = leftRight.every(char => char === leftRight[0] && char !== '');
-    const rightLeft = board.map((row, index) => row.reverse()[index]);
-    const rightLeftCheck = rightLeft.every(char => char === rightLeft[0] && char !== '');
+    const reverseBoard = [...board]
+    const rightLeft = reverseBoard.reverse().map((row, index) => row[index]);
+    const rightLeftCheck = rightLeft.every(char => char === rightLeft[2] && char !== '');
     
     if (leftRightCheck || rightLeftCheck) {
         statusEl.textContent = `Game Over. ${leftRightCheck ? leftRight[0] : rightLeft[0]} wins!`;
@@ -62,7 +63,6 @@ export function checkDiagonalWin() {
 }
 
 export function checkWin() {
-    const boxesArr = Array.from(boxes);
     const noEmptyBox = boxesArr.every(box => box.disabled);
     if ((!checkHorizontalWin() || !checkVerticalWin() || !checkDiagonalWin()) && noEmptyBox) {
         statusEl.textContent = `Draw! Game Over.`;
