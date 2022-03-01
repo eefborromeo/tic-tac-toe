@@ -95,6 +95,8 @@ h1 {
   border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 5px;
+  background-color: white;
+  color: black;
 }
 
 #history button:nth-child(odd):hover {
@@ -105,6 +107,13 @@ h1 {
 #history button:nth-child(even):hover {
   background-color: rgb(233, 156, 120);
   color: white;
+}
+
+#history button:disabled,
+#history button:disabled:hover {
+  opacity: 0.5;
+  background-color: white;
+  color: black;
 }
 
 @media (max-width: 768px) {

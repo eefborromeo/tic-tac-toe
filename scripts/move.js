@@ -5,7 +5,7 @@ import { showHistory } from './history.js'
 
 export let currentPlayer = x;
 
-let moves = [];
+export let moves = [];
 
 export function toggleCurrentPlayer() {
     return currentPlayer = currentPlayer === x.name ? o.name : x.name;
@@ -13,11 +13,10 @@ export function toggleCurrentPlayer() {
 
 function addMove() {
     toggleCurrentPlayer();
-    board[this.dataset.boardIndex].splice(this.dataset.index, 1, currentPlayer);
 
     currentPlayer === x.name ? 
-        (this.textContent = x.name, this.classList.add('x')) : 
-        (this.textContent = o.name, this.classList.add('o'));
+        (this.textContent = x.name, this.classList.add('x'), board[this.dataset.boardIndex][this.dataset.index] = currentPlayer) : 
+        (this.textContent = o.name, this.classList.add('o'), board[this.dataset.boardIndex][this.dataset.index] = currentPlayer);
 
     this.disabled = true;
     statusEl.textContent = `${currentPlayer === x.name ? o.name : x.name}'s turn`;
@@ -27,6 +26,7 @@ function addMove() {
     checkWin();
     addScore();
     showHistory();
+    moves.push(JSON.parse(JSON.stringify(board)))
 }
 
 export function addChars() {
