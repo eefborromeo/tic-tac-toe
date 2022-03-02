@@ -124,4 +124,14 @@ h1 {
   .box:disabled {
     font-size: 3rem;
   }
+
+  #stats {
+    font-size: 1.5rem;
+  }
+
+  #history {
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-gap: 10px;
+  }
 }
