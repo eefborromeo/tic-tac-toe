@@ -133,5 +133,6 @@ h1 {
     flex-wrap: wrap;
     justify-content: center;
     grid-gap: 10px;
+    width: 40%;
   }
 }
