@@ -1,4 +1,4 @@
-import { boxes, boxesArr, x, o, board, statusEl } from './variables.js';
+import { boxes, x, o, board, statusEl } from './variables.js';
 import { checkHorizontalWin, checkVerticalWin, checkDiagonalWin, checkWin } from './win.js';
 import { addScore } from './score.js';
 import { showHistory } from './history.js'
