@@ -8,7 +8,7 @@ export const x = {
 };
 export const o = {
     name: 'O', 
-    score: 0
+    score: 0,
 };
 
 export let board = [

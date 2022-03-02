@@ -66,6 +66,7 @@ export function checkWin() {
     const noEmptyBox = boxesArr.every(box => box.disabled);
     if ((!checkHorizontalWin() || !checkVerticalWin() || !checkDiagonalWin()) && noEmptyBox) {
         statusEl.textContent = `Draw! Game Over.`;
+        return 'Tie';
     } else if (checkHorizontalWin() || checkVerticalWin() || checkDiagonalWin()) {
         disableBoard();
         // if (checkHorizontalWin()) {

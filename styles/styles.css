@@ -114,6 +114,10 @@ h1 {
   padding: 1rem 0;
 }
 
+#stats ol {
+  list-style-position: inside;
+}
+
 #history {
   visibility: hidden;
   opacity: 0;
