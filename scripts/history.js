@@ -17,16 +17,21 @@ function newGame() {
     toggleCurrentPlayer();
     statusEl.textContent = `${toggleCurrentPlayer() === x.name ? o.name : x.name}'s turn`;
     historyEl.classList.remove('show');
+    previousButton.disabled = false;
     moves.length = 0;
+    counter = 0;
 }
 
 function showButtons() {
     historyEl.classList.add('show')
+    nextButton.disabled = true;
 }
-
+let previous;
 function showPreviousMove() {
-    const previous = moves.slice().reverse()
+    previous = moves.slice().reverse()
+    nextButton.disabled = false;
     let prevArr;
+
     if (counter < previous.length - 1) {
         prevArr = previous[counter += 1]
     } 
@@ -44,8 +49,30 @@ function showPreviousMove() {
             }
         })
     } 
- 
+}
 
+function showNextMove() {
+    let nextArr;
+    previousButton.disabled = false;
+
+    if (counter > 0) {
+      nextArr = previous[counter -= 1];
+    }
+
+    if (counter === 0) {
+        nextButton.disabled = true;
+    }
+
+    if (nextArr) {
+        boxes.forEach((box) => {
+            box.textContent = nextArr[box.dataset.boardIndex][box.dataset.index];
+            if (box.textContent !== '') {
+                box.textContent === 'X' ? box.classList.add('x') : box.classList.add('o');
+             
+            }
+            
+        })
+    }
 }
 
 export function showHistory() {
@@ -56,3 +83,4 @@ export function showHistory() {
 }
 
 previousButton.addEventListener('click', showPreviousMove)
+nextButton.addEventListener('click', showNextMove)
