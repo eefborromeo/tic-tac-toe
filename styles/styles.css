@@ -34,10 +34,10 @@ h1 {
 }
 
 #status .choices {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
   justify-content: center;
-  align-items: center;
-  grid-gap: 10px;
+  gap: 10px;
   padding-top: 10px;
 }
 
