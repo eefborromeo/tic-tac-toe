@@ -59,7 +59,7 @@ export function checkDiagonalWin() {
     if (leftRightCheck || rightLeftCheck) {
         statusEl.textContent = `Game Over. ${leftRightCheck ? leftRight[0] : rightLeft[0]} wins!`;
         return leftRightCheck ? leftRight[0] : rightLeft[0]
-    } 
+    }
 }
 
 export function checkWin() {
@@ -68,5 +68,14 @@ export function checkWin() {
         statusEl.textContent = `Draw! Game Over.`;
     } else if (checkHorizontalWin() || checkVerticalWin() || checkDiagonalWin()) {
         disableBoard();
+        // if (checkHorizontalWin()) {
+        //     const win = boxesArr.filter(box => box.textContent === checkHorizontalWin());
+        //     win.forEach(char => char.classList.add('horizontal-win'))
+        // } else if (checkVerticalWin()) {
+        //     const win = boxesArr.filter(box => box.textContent === checkVerticalWin());
+        //     win.forEach(char => char.classList.add('vertical-win'))
+        // } else if (checkDiagonalWin()) {
+            
+        // }
     }
 }

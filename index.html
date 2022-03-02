@@ -12,7 +12,15 @@
     <div class="container">
         <h1>TIC TAC TOE</h1>
         <div id="status">
-            <p>X will start</p>
+            <div class="question">
+                Who will start?
+                <div class="choices">
+                    <button data-player-name="X">X</button>
+                        or 
+                    <button data-player-name="O">O</button>
+                </div>
+            </div>
+            <p class="hide"></p>
         </div>
         <div id="board">
             <button class="box" data-board-index="0" data-index="0"></button>

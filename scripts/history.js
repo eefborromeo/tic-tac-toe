@@ -1,4 +1,4 @@
-import { boxes, boxesArr, board, x, o, statusEl } from "./variables.js";
+import { boxes, boxesArr, board, questionDiv, x, o, statusEl } from "./variables.js";
 import { toggleCurrentPlayer, moves } from "./move.js";
 
 const historyEl = document.querySelector('#history')
@@ -14,8 +14,8 @@ function newGame() {
         box.disabled = false;
     })
     board.forEach(row => row.fill(''))
-    toggleCurrentPlayer();
-    statusEl.textContent = `${toggleCurrentPlayer() === x.name ? o.name : x.name}'s turn`;
+    questionDiv.classList.remove('hide');
+    statusEl.textContent = '';
     historyEl.classList.remove('show');
     previousButton.disabled = false;
     moves.length = 0;

@@ -33,6 +33,25 @@ h1 {
   font-size: 2rem;
 }
 
+#status .choices {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 10px;
+  padding-top: 10px;
+}
+
+.hide {
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: 500ms;
+}
+
+#status > p {
+  padding-top: 10px;
+}
+
 #board {
   width: 50vh;
   height: 50vh;
@@ -48,7 +67,30 @@ h1 {
   background-color: rgb(66 69 119);
   border-radius: 5px;
   cursor: pointer;
+  /* position: relative; */
 }
+
+/* .box.horizontal-win::before {
+  content: '';
+  display: block;
+  width: 120%;
+  height: 3px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: -10%;
+}
+
+.box.vertical-win::before {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 120%;
+  background-color: white;
+  position: absolute;
+  top: -10%;
+  left: 50%;
+} */
 
 .box:disabled {
   color: white;
@@ -90,7 +132,8 @@ h1 {
 
 .previous,
 .new-game,
-.next {
+.next,
+#status .choices button {
   text-transform: uppercase;
   border: none;
   padding: 0.8rem 1.5rem;
