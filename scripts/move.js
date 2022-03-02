@@ -30,6 +30,7 @@ function addMove() {
 }
 
 function addCurrentPlayer() {
+    boxes.forEach(button => button.disabled = false)
     currentPlayer = this.dataset.playerName
     questionDiv.classList.add('hide');
     statusEl.classList.remove('hide');

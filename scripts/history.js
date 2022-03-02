@@ -11,7 +11,6 @@ function newGame() {
     boxes.forEach(box => {
         box.textContent = '';
         box.classList.remove('x', 'o');
-        box.disabled = false;
     })
     board.forEach(row => row.fill(''))
     questionDiv.classList.remove('hide');
