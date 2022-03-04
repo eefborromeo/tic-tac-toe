@@ -4,7 +4,7 @@ import { addScore } from './score.js';
 import { counter, previous, updatePrevious, showHistory, resetCounter } from './history.js'
 
 const playerChoice = document.querySelectorAll('[data-player-name]');
-const moveHistory = document.querySelector('#moves > ol');
+export const moveHistory = document.querySelector('#moves > ol');
 
 let literalMoves = [
     ['top left', 'top center', 'top right'],
@@ -33,6 +33,7 @@ export function showBoard() {
         box.textContent = board[box.dataset.boardIndex][box.dataset.index];
         if (box.textContent !== '') {
             box.textContent === x.name ? box.classList.add('x') : box.classList.add('o');
+            box.disabled = true;
         } else if (box.textContent === '') {
             box.classList.remove('x'); 
             box.classList.remove('o');
@@ -43,7 +44,13 @@ export function showBoard() {
 function addMove() {
     board[this.dataset.boardIndex][this.dataset.index] = currentPlayer;
     this.disabled = true;
+    if (moves.length > 0) {
+        const present = state.present.pop();
+        console.log('add move', present);
+        state.past.unshift(JSON.parse(JSON.stringify(present)));
+    }
     moves.unshift(JSON.parse(JSON.stringify(board)));
+    state.present.push(JSON.parse(JSON.stringify(moves[0])));
     // state.present = moves[counter];
     // state.past.unshift(JSON.parse(JSON.stringify(state.present)));
     // state.past.unshift(JSON.parse(JSON.stringify(board)));
@@ -57,6 +64,10 @@ function addMove() {
     checkWin();
     addScore();
     showBoard();
+    // console.log('board', board);
+    // console.log('moves', moves);
+    // console.log('moves', moves)
+    // console.log('state', state)
 }
 
 function addCurrentPlayer() {
@@ -66,6 +77,8 @@ function addCurrentPlayer() {
     statusEl.classList.remove('hide');
     statusEl.textContent = `${currentPlayer}'s turn`;
 }
+
+// EVENTS
 
 playerChoice.forEach(player => {
     player.addEventListener('click', addCurrentPlayer)

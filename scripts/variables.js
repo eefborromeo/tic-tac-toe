@@ -16,3 +16,13 @@ export let board = [
     ['', '', ''],
     ['', '', ''],
 ]
+
+export const state = {
+    past: [],
+    present: [],
+    future: []
+}
+
+export function updateBoard(val) {
+    board = val;
+}
