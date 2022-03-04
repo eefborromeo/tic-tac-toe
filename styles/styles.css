@@ -118,6 +118,13 @@ h1 {
   list-style-position: inside;
 }
 
+#moves ol {
+  list-style-position: inside;
+  color: white;
+  width: 55%;
+  margin: auto;
+}
+
 #history {
   visibility: hidden;
   opacity: 0;
