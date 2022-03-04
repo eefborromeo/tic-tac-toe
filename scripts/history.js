@@ -1,11 +1,14 @@
-import { boxes, boxesArr, board, questionDiv, x, o, statusEl } from "./variables.js";
-import { toggleCurrentPlayer, moves } from "./move.js";
+import { boxes, boxesArr, board, questionDiv, x, o, statusEl, updateBoard, state } from "./variables.js";
+import { moves, presentMove, updateMove,  currentPlayer, toggleCurrentPlayer, showBoard } from "./move.js";
 
 const historyEl = document.querySelector('#history')
 const previousButton = document.querySelector('.previous');
 const newGameButton = document.querySelector('.new-game');
 const nextButton = document.querySelector('.next');
-let counter = 0;
+const moveHistory = document.querySelector('#moves > ol');
+
+export let counter = 0;
+export let previous;
 
 function newGame() {
     boxes.forEach(box => {
@@ -18,66 +21,62 @@ function newGame() {
     historyEl.classList.remove('show');
     previousButton.disabled = false;
     moves.length = 0;
-    counter = 0;
+    moveHistory.textContent = '';
 }
 
 function showButtons() {
     historyEl.classList.add('show')
     nextButton.disabled = true;
 }
-let previous;
-function showPreviousMove() {
-    previous = moves.slice().reverse()
-    nextButton.disabled = false;
-    let prevArr;
 
-    if (counter < previous.length - 1) {
-        prevArr = previous[counter += 1]
-    } 
-    
-    if (counter === previous.length - 1) {
+export function updatePrevious(val) {
+    previous = val;
+}
+
+export function resetCounter() {
+    counter = 0;
+}
+
+
+function setCounter(val) {
+    return counter = val;
+}
+
+function showPreviousMove() {
+    counter++;
+    if (counter < moves.length) {
+        console.log(state, counter)
+        state.past = moves.slice().splice(counter),
+        state.future = moves.slice().splice(0, counter);
+        state.present = moves[counter];
+        updateBoard(state.present)
+        showBoard();
+        nextButton.disabled = false;
+    }
+    if (counter === moves.length) {
         previousButton.disabled = true;
     }
 
-    if (prevArr) {
-        boxes.forEach((box) => {
-            box.textContent = prevArr[box.dataset.boardIndex][box.dataset.index]
-            if (box.textContent === '') {
-                box.classList.remove('o');
-                box.classList.remove('x');
-            }
-        })
-    } 
 }
 
 function showNextMove() {
-    let nextArr;
-    previousButton.disabled = false;
-
-    if (counter > 0) {
-      nextArr = previous[counter -= 1];
+    counter--;
+    if(counter >= 0) {
+        state.past = moves.slice().splice(counter),
+        state.future = moves.slice().splice(0, counter);
+        state.present = moves[counter];
+       updateBoard(state.present);
+       showBoard();
     }
 
     if (counter === 0) {
         nextButton.disabled = true;
-    }
-
-    if (nextArr) {
-        boxes.forEach((box) => {
-            box.textContent = nextArr[box.dataset.boardIndex][box.dataset.index];
-            if (box.textContent !== '') {
-                box.textContent === 'X' ? box.classList.add('x') : box.classList.add('o');
-             
-            }
-            
-        })
+        previousButton.disabled = false;
     }
 }
 
 export function showHistory() {
-    if (boxesArr.every(box => box.disabled)) {
         showButtons()
-    }
     newGameButton.addEventListener('click', newGame)
 }
 
