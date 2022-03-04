@@ -49,15 +49,14 @@ function addMove() {
     // state.past.unshift(JSON.parse(JSON.stringify(board)));
     // state.past = moves.slice();
     // state.present = state.past.shift();
-    resetCounter();
-    toggleCurrentPlayer();
-    checkWin();
-    addScore();
-    showBoard();
     // add move to history
     const li = document.createElement('li');
     li.textContent = `${currentPlayer} played ${literalMoves[this.dataset.boardIndex][this.dataset.index]}`
     moveHistory.appendChild(li);
+    toggleCurrentPlayer();
+    checkWin();
+    addScore();
+    showBoard();
 }
 
 function addCurrentPlayer() {
