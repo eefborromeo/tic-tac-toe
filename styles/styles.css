@@ -76,30 +76,7 @@ h1 {
   background-color: rgb(66 69 119);
   border-radius: 5px;
   cursor: pointer;
-  /* position: relative; */
 }
-
-/* .box.horizontal-win::before {
-  content: '';
-  display: block;
-  width: 120%;
-  height: 3px;
-  background-color: white;
-  position: absolute;
-  top: 50%;
-  left: -10%;
-}
-
-.box.vertical-win::before {
-  content: '';
-  display: block;
-  width: 3px;
-  height: 120%;
-  background-color: white;
-  position: absolute;
-  top: -10%;
-  left: 50%;
-} */
 
 .box:disabled {
   color: white;

@@ -1,7 +1,7 @@
 import { boxes, x, o, tie, minusTie, board, statusEl, state, questionDiv, moveHistory, movesEl } from './variables.js';
 import { checkWin } from './win.js';
 import { addScore, xScore, oScore, tieEl } from './score.js';
-import { previousButton, nextButton, counter, previous, updatePrevious, showHistory, resetCounter } from './history.js'
+import { previousButton, nextButton, counter, resetCounter } from './history.js'
 
 const playerChoice = document.querySelectorAll('[data-player-name]');
 
@@ -16,16 +16,10 @@ export let currentPlayer;
 
 export let moves = [];
 
-export let presentMove;
-
 export function toggleCurrentPlayer() {
     currentPlayer = currentPlayer === x.name ? o.name : x.name;
     statusEl.textContent = `${currentPlayer}'s turn`;
     return currentPlayer;
-}
-
-export function updateMove(val) {
-    moves = val;
 }
 
 export function showBoard() {

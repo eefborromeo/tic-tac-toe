@@ -1,6 +1,5 @@
-import { boxes, boxesArr, board, questionDiv, x, o, statusEl, updateBoard, state, moveHistory, movesEl } from "./variables.js";
-import { checkHorizontalWin, checkVerticalWin, checkDiagonalWin, checkWin } from "./win.js";
-import { moves, presentMove, updateMove,  currentPlayer, toggleCurrentPlayer, showBoard } from "./move.js";
+import { boxes, board, questionDiv, statusEl, updateBoard, state, moveHistory, movesEl } from "./variables.js";
+import { moves, currentPlayer, toggleCurrentPlayer, showBoard } from "./move.js";
 
 const historyEl = document.querySelector('#history')
 export const previousButton = document.querySelector('.previous');
@@ -31,10 +30,6 @@ function newGame() {
 function showButtons() {
     historyEl.classList.add('show')
     nextButton.disabled = true;
-}
-
-export function updatePrevious(val) {
-    previous = val;
 }
 
 export function resetCounter() {
@@ -87,7 +82,7 @@ function showNextMove() {
 }
 
 export function showHistory() {
-        showButtons()
+    showButtons()
     newGameButton.addEventListener('click', newGame)
 }
 

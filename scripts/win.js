@@ -1,6 +1,5 @@
 import { boxes, boxesArr, board, statusEl, o } from "./variables.js";
 import { showHistory } from './history.js';
-import { addScore } from "./score.js";
 
 function disableBoard() {
     boxes.forEach(box => box.disabled = 'true');
@@ -73,14 +72,5 @@ export function checkWin() {
     } else if (checkHorizontalWin() || checkVerticalWin() || checkDiagonalWin()) {
         disableBoard();
         showHistory();
-        // if (checkHorizontalWin()) {
-        //     const win = boxesArr.filter(box => box.textContent === checkHorizontalWin());
-        //     win.forEach(char => char.classList.add('horizontal-win'))
-        // } else if (checkVerticalWin()) {
-        //     const win = boxesArr.filter(box => box.textContent === checkVerticalWin());
-        //     win.forEach(char => char.classList.add('vertical-win'))
-        // } else if (checkDiagonalWin()) {
-            
-        // }
     }
 }
