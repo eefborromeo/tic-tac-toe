@@ -4,6 +4,7 @@ import { addScore, xScore, oScore, tieEl } from './score.js';
 import { previousButton, nextButton, counter, previous, updatePrevious, showHistory, resetCounter } from './history.js'
 
 const playerChoice = document.querySelectorAll('[data-player-name]');
+const movesEl = document.querySelector('#moves');
 
 
 let literalMoves = [
@@ -89,6 +90,8 @@ function addMove() {
     checkWin();
     addScore();
     showBoard();
+
+    movesEl.classList.add('show');
 }
 
 function addCurrentPlayer() {

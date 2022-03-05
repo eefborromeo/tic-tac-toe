@@ -129,8 +129,16 @@ h1 {
 }
 
 #moves {
+  visibility: hidden;
+  opacity: 0;
   grid-area: history;
   justify-self: center;
+}
+
+#moves.show {
+  visibility: visible;
+  opacity: 1;
+  transition: 800ms;
 }
 
 #moves h2 {
