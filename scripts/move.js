@@ -65,13 +65,12 @@ function addMove() {
     moves.unshift(JSON.parse(JSON.stringify(board)));
     state.present.push(JSON.parse(JSON.stringify(moves[0])));
     
-    // add move to history
     if (state.future.length > 0) {
         updateScore();
-        moveHistory.removeChild(moveHistory.lastChild)
+        for (let i = 0; i < counter; i++) {
+            moveHistory.removeChild(moveHistory.lastChild)
+        }
     }
-
-    console.log(state.future.length);
     const li = document.createElement('li');
     li.textContent = `${currentPlayer} played ${literalMoves[this.dataset.boardIndex][this.dataset.index]}`
     moveHistory.appendChild(li);

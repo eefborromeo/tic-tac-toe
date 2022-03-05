@@ -41,6 +41,7 @@ export function resetCounter() {
 }
 
 function showPreviousMove() {
+    counter++;
     if (moves.length < 2) return;
         moves.shift();
         state.future.push(state.present.pop());
