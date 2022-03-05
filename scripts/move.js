@@ -70,6 +70,7 @@ function addMove() {
         for (let i = 0; i < counter; i++) {
             moveHistory.removeChild(moveHistory.lastChild)
         }
+        resetCounter();
     }
     const li = document.createElement('li');
     li.textContent = `${currentPlayer} played ${literalMoves[this.dataset.boardIndex][this.dataset.index]}`
