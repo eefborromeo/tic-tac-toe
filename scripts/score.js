@@ -1,9 +1,9 @@
-import { x, o } from './variables.js'
+import { x, o, tie, addTie } from './variables.js'
 import { checkHorizontalWin, checkVerticalWin, checkDiagonalWin, checkWin } from "./win.js";
 
-const xScore = document.querySelector('[data-x-score]');
-const oScore = document.querySelector('[data-o-score]');
-const tieOl = document.querySelectorAll('#stats ol');
+export const xScore = document.querySelector('[data-x-score]');
+export const oScore = document.querySelector('[data-o-score]');
+export const tieEl = document.querySelectorAll('[data-tie]');
 
 function updateScore(winner) {
     if (winner !== 'Tie') {
@@ -11,10 +11,9 @@ function updateScore(winner) {
         xScore.textContent = x.score;
         oScore.textContent = o.score;
     } else {
-        tieOl.forEach(ol => {
-            let li = document.createElement('li');
-            li.innerHTML = 'Tie'
-            ol.appendChild(li) 
+        addTie(1);
+        tieEl.forEach(p => {
+            p.textContent = tie;
         })
     }
 }

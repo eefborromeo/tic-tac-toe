@@ -1,10 +1,10 @@
-import { boxes, x, o, board, statusEl, state, questionDiv } from './variables.js';
+import { boxes, x, o, tie, minusTie, board, statusEl, state, questionDiv, moveHistory } from './variables.js';
 import { checkWin } from './win.js';
-import { addScore } from './score.js';
-import { counter, previous, updatePrevious, showHistory, resetCounter } from './history.js'
+import { addScore, xScore, oScore, tieEl } from './score.js';
+import { previousButton, nextButton, counter, previous, updatePrevious, showHistory, resetCounter } from './history.js'
 
 const playerChoice = document.querySelectorAll('[data-player-name]');
-export const moveHistory = document.querySelector('#moves > ol');
+
 
 let literalMoves = [
     ['top left', 'top center', 'top right'],
@@ -41,33 +41,54 @@ export function showBoard() {
     })
 }
 
+function updateScore() {
+    if (tie > 0) {
+        minusTie(1);
+        tieEl.forEach(p => p.textContent = tie);
+    }
+    if (x.score === 0) return;
+    x.score = x.score - 1;
+    xScore.textContent = x.score;
+    if (o.score === 0) return;
+    o.score = o.score - 1;
+    oScore.textContent = o.score;
+}
+
+
 function addMove() {
     board[this.dataset.boardIndex][this.dataset.index] = currentPlayer;
     this.disabled = true;
     if (moves.length > 0) {
         const present = state.present.pop();
-        console.log('add move', present);
         state.past.unshift(JSON.parse(JSON.stringify(present)));
     }
     moves.unshift(JSON.parse(JSON.stringify(board)));
     state.present.push(JSON.parse(JSON.stringify(moves[0])));
-    // state.present = moves[counter];
-    // state.past.unshift(JSON.parse(JSON.stringify(state.present)));
-    // state.past.unshift(JSON.parse(JSON.stringify(board)));
-    // state.past = moves.slice();
-    // state.present = state.past.shift();
+    
     // add move to history
+    if (state.future.length > 0) {
+        updateScore();
+        moveHistory.removeChild(moveHistory.lastChild)
+    }
+
+    console.log(state.future.length);
     const li = document.createElement('li');
     li.textContent = `${currentPlayer} played ${literalMoves[this.dataset.boardIndex][this.dataset.index]}`
     moveHistory.appendChild(li);
+    
+    if (moves.length > 1) {
+        previousButton.disabled = false;
+    }
+    
+    state.future.length = 0;
+    if (state.future.length === 0) {
+        nextButton.disabled = true;
+    }
+    
     toggleCurrentPlayer();
     checkWin();
     addScore();
     showBoard();
-    // console.log('board', board);
-    // console.log('moves', moves);
-    // console.log('moves', moves)
-    // console.log('state', state)
 }
 
 function addCurrentPlayer() {

@@ -41,7 +41,6 @@ export function resetCounter() {
 }
 
 function showPreviousMove() {
-    console.log(moves);
     if (moves.length < 2) return;
         moves.shift();
         state.future.push(state.present.pop());
@@ -66,7 +65,6 @@ function showPreviousMove() {
 }
 
 function showNextMove() {
-    console.log(moves, state)
     moves.unshift(JSON.parse(JSON.stringify(state.present)));
     state.past.unshift(state.present.pop());
     state.present.push(JSON.parse(JSON.stringify(state.future.pop())))
