@@ -3,6 +3,7 @@ export const boxesArr = Array.from(boxes);
 export const questionDiv = document.querySelector('.question');
 export const statusEl = document.querySelector('#status > p');
 export const moveHistory = document.querySelector('#moves > ol');
+export const movesEl = document.querySelector('#moves');
 
 export const x = {
     name: 'X', 

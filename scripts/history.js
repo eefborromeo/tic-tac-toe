@@ -1,4 +1,4 @@
-import { boxes, boxesArr, board, questionDiv, x, o, statusEl, updateBoard, state, moveHistory } from "./variables.js";
+import { boxes, boxesArr, board, questionDiv, x, o, statusEl, updateBoard, state, moveHistory, movesEl } from "./variables.js";
 import { checkHorizontalWin, checkVerticalWin, checkDiagonalWin, checkWin } from "./win.js";
 import { moves, presentMove, updateMove,  currentPlayer, toggleCurrentPlayer, showBoard } from "./move.js";
 
@@ -25,6 +25,7 @@ function newGame() {
     historyEl.classList.remove('show');
     previousButton.disabled = false;
     moveHistory.textContent = '';
+    movesEl.classList.remove('show');
 }
 
 function showButtons() {
