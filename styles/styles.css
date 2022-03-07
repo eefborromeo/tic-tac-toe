@@ -49,6 +49,24 @@ h1 {
   justify-content: center;
   gap: 10px;
   padding-top: 10px;
+  font-size: 1.5rem;
+  align-items: center;
+}
+
+#status .choices button {
+  text-transform: uppercase;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 700;
+  color: white;
+}
+
+#status .choices button:nth-child(1) {
+  background-color: rgb(203, 126, 168);
+}
+#status .choices button:nth-child(2) {
+  background-color: rgb(233, 156, 120);
 }
 
 .hide {
@@ -71,6 +89,10 @@ h1 {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-gap: 8px;
+}
+
+#board button {
+  font-weight: 700;
 }
 
 .box {
@@ -151,14 +173,14 @@ h1 {
 
 .previous,
 .new-game,
-.next,
-#status .choices button {
+.next {
   text-transform: uppercase;
   border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 5px;
   background-color: white;
   color: black;
+  font-weight: 700;
 }
 
 #history button:nth-child(odd):hover {
