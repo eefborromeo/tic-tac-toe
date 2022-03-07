@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -10,6 +10,7 @@
 body {
   background-color: rgb(38, 42, 85);
   height: 100vh;
+  font-weight: 700;
 }
 
 .container {
@@ -39,6 +40,7 @@ h1 {
   text-transform: uppercase;
   font-size: 2rem;
   grid-area: status;
+  font-weight: 300;
 }
 
 #status .choices {
